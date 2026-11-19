@@ -14,9 +14,9 @@ function SiteFooter() {
           <a href="#journey">Your journey</a>
           <a href="#top">Back to top ↑</a>
         </nav>
-        <div className="member-note" id="member-login">
+        <div className="member-note">
           <span className="member-note-label">Already with us?</span>
-          <p>Member sign-in is coming soon. Your MANORA space is in the works.</p>
+          <p><a href="/login">Sign in to your account</a> or <a href="/register">begin your journey</a>.</p>
         </div>
       </div>
       <div className="footer-bottom page-width">

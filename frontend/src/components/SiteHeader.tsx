@@ -44,8 +44,8 @@ function SiteHeader() {
           <a href="#about" onClick={closeMenu}>About</a>
           <a href="#features" onClick={closeMenu}>Features</a>
           <a href="#journey" onClick={closeMenu}>Your journey</a>
-          <a className="login-link" href="#member-login" onClick={closeMenu}>Login</a>
-          <a className="button button-nav" href="#journey" onClick={closeMenu}>Start your journey <span aria-hidden="true">↗</span></a>
+          <a className="login-link" href="/login" onClick={closeMenu}>Login</a>
+          <a className="button button-nav" href="/register" onClick={closeMenu}>Start your journey <span aria-hidden="true">↗</span></a>
         </nav>
       </div>
     </header>

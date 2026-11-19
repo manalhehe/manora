@@ -104,7 +104,7 @@ function LandingPage() {
                 Build better habits, strengthen your discipline, and become the person you&apos;ve always wanted to be.
               </p>
               <div className="hero-actions">
-                <a className="button button-primary" href="#journey">
+                <a className="button button-primary" href="/register">
                   Start your journey <span aria-hidden="true">↗</span>
                 </a>
                 <a className="button button-text" href="#about">
@@ -218,7 +218,7 @@ function LandingPage() {
             <div className="cta-flower" aria-hidden="true">✳</div>
             <p className="eyebrow">This is your moment</p>
             <h2 id="cta-title">Your next chapter starts <em>with one decision.</em></h2>
-            <a className="button button-light" href="#journey">
+            <a className="button button-light" href="/register">
               Start your transformation <span aria-hidden="true">↗</span>
             </a>
             <p className="cta-footnote">No pressure to be perfect. Just a place to begin.</p>

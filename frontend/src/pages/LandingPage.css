@@ -966,6 +966,16 @@ h2 {
   line-height: 1.7;
 }
 
+.member-note a {
+  color: #e5eddf;
+  text-decoration-color: rgb(229 237 223 / 55%);
+  text-underline-offset: 3px;
+}
+
+.member-note a:hover {
+  text-decoration-color: #e5eddf;
+}
+
 .footer-bottom {
   display: flex;
   justify-content: space-between;
