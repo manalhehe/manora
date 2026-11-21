@@ -71,6 +71,7 @@ test("registration, login, current user, logout, and origin protection", async (
     const registrationCookie = registration.headers.get("set-cookie");
     assert.ok(registrationCookie?.includes("HttpOnly"));
     assert.ok(registrationCookie?.includes("SameSite=Lax"));
+    assert.ok(registrationCookie?.includes("Path=/api"));
 
     const duplicate = await send("/api/auth/register", "POST", {
       fullName: "Jordan Lee",
@@ -145,6 +146,7 @@ test("registration, login, current user, logout, and origin protection", async (
         .get("set-cookie")
         ?.includes("Expires=Thu, 01 Jan 1970 00:00:00 GMT"),
     );
+    assert.ok(logout.headers.get("set-cookie")?.includes("Path=/api"));
 
     const loggedOutProfile = await send("/api/auth/me", "GET");
     assert.equal(loggedOutProfile.status, 401);

@@ -99,7 +99,7 @@ function setSessionCookie(
   response.cookie("manora_session", createAccessToken(user, rememberMe), {
     httpOnly: true,
     maxAge,
-    path: "/api/auth",
+    path: "/api",
     sameSite: "lax",
     secure: secureCookies,
   });
@@ -161,7 +161,7 @@ export function logout(_request: Request, response: Response): void {
   const { secureCookies } = getConfig();
   response.clearCookie("manora_session", {
     httpOnly: true,
-    path: "/api/auth",
+    path: "/api",
     sameSite: "lax",
     secure: secureCookies,
   });

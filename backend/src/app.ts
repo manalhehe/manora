@@ -5,6 +5,7 @@ import { getConfig } from "./config/env";
 import { errorHandler } from "./middleware/error-handler";
 import authRoutes from "./routes/auth.routes";
 import healthRoutes from "./routes/health.routes";
+import onboardingRoutes from "./routes/onboarding.routes";
 
 export function createApp() {
   const { frontendOrigin } = getConfig();
@@ -21,6 +22,7 @@ export function createApp() {
   app.use(cookieParser());
   app.use("/api/health", healthRoutes);
   app.use("/api/auth", authRoutes);
+  app.use("/api/onboarding", onboardingRoutes);
   app.use(errorHandler);
 
   return app;

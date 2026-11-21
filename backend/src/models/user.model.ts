@@ -1,7 +1,4 @@
-import { mkdirSync } from "node:fs";
-import { dirname } from "node:path";
-import Database from "better-sqlite3";
-import { getConfig } from "../config/env";
+import { closeDatabase as closeSharedDatabase, getDatabase } from "../database";
 
 export interface UserProfile {
   id: number;
@@ -20,31 +17,6 @@ interface DatabaseUser {
   email: string;
   password_hash: string;
   created_at: string;
-}
-
-let database: Database.Database | undefined;
-
-function getDatabase(): Database.Database {
-  if (database) {
-    return database;
-  }
-
-  const databasePath = getConfig().databasePath;
-  mkdirSync(dirname(databasePath), { recursive: true });
-  database = new Database(databasePath);
-  database.pragma("journal_mode = WAL");
-  database.pragma("foreign_keys = ON");
-  database.pragma("busy_timeout = 5000");
-  database.exec(`
-    CREATE TABLE IF NOT EXISTS users (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      full_name TEXT NOT NULL,
-      email TEXT NOT NULL COLLATE NOCASE UNIQUE,
-      password_hash TEXT NOT NULL,
-      created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
-    )
-  `);
-  return database;
 }
 
 function mapUser(row: DatabaseUser): UserRecord {
@@ -103,6 +75,5 @@ export function createUser(
 }
 
 export function closeDatabase(): void {
-  database?.close();
-  database = undefined;
+  closeSharedDatabase();
 }

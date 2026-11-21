@@ -16,7 +16,7 @@ The database path may be changed with `DATABASE_PATH`; relative paths resolve fr
 - `GET /api/auth/me` — requires the session cookie and returns the authenticated profile; responds `401` when the session is missing or invalid.
 - `POST /api/auth/logout` — clears the session cookie and responds `204`.
 
-Access tokens are signed JWTs in an `HttpOnly`, `SameSite=Lax` cookie, scoped to `/api/auth`; they are not returned in JSON or stored in browser storage. The API only accepts the configured frontend origin for credentialed CORS and rejects cross-origin authentication mutations. In production, set `NODE_ENV=production` to enable `Secure` cookies and serve over HTTPS. The frontend and API should share a site so `SameSite=Lax` cookies work.
+Access tokens are signed JWTs in an `HttpOnly`, `SameSite=Lax` cookie, scoped to `/api` so authenticated API routes under `/api/auth` and `/api/onboarding` receive it; they are not returned in JSON or stored in browser storage. The API only accepts the configured frontend origin for credentialed CORS and rejects cross-origin authentication and onboarding mutations. In production, set `NODE_ENV=production` to enable `Secure` cookies and serve over HTTPS. The frontend and API should share a site so `SameSite=Lax` cookies work.
 
 ## Commands
 
